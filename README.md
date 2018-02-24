@@ -71,7 +71,7 @@ _This is a project designed to take a user input of a stylist and a user input o
 
 * _When the command prompt runs the build, enter localhost:5000 to your web browser. This should take you to the index page._
 
-Github Repository Link (https://github.com/eyesicedover/ContactBook)
+Github Repository Link (https://github.com/eyesicedover/HairSalon)
 
 ## Support and contact details
 
@@ -84,6 +84,8 @@ _Please email me directly at eyesicedover@gmail.com_
 * Razor
 * .NET Core
 * .NET SDK
+* MAMP
+* mysql
 
 ### License
 
