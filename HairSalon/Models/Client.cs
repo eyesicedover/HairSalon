@@ -61,7 +61,7 @@ namespace HairSalon.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"DELETE FROM clients; ALTER TABLE clients AUTO_INCREMENT = 1;";
+            cmd.CommandText = @"DELETE FROM clients;";
 
             cmd.ExecuteNonQuery();
 
@@ -72,15 +72,43 @@ namespace HairSalon.Models
             }
         }
 
-        public static List<Client> GetClients(int givenId)
+        public void Save()
         {
-            List<Client> specificClients = new List<Client>();
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO clients (name, stylistId) VALUES (@ClientName, @StylistId);";
+
+            MySqlParameter name = new MySqlParameter();
+            name.ParameterName = "@ClientName";
+            name.Value = this._name;
+            cmd.Parameters.Add(name);
+
+            MySqlParameter stylistId = new MySqlParameter();
+            stylistId.ParameterName = "@StylistId";
+            stylistId.Value = this._stylistId;
+            cmd.Parameters.Add(stylistId);
+
+            cmd.ExecuteNonQuery();
+            _id = (int)cmd.LastInsertedId;
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public static List<Client> GetAll()
+        {
+            List<Client> allClients = new List<Client>();
 
             MySqlConnection conn = DB.Connection();
             conn.Open();
 
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM clients WHERE stylistId = "+ givenId + ";";
+            cmd.CommandText = @"SELECT * FROM clients;";
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
             while (rdr.Read())
             {
@@ -88,6 +116,7 @@ namespace HairSalon.Models
                 string clientName = rdr.GetString(1);
                 int stylistId = rdr.GetInt32(2);
                 Client client = new Client(clientName, stylistId, clientId);
+                allClients.Add(client);
             }
 
             conn.Close();
@@ -96,7 +125,7 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
 
-            return specificClients;
+            return allClients;
         }
     }
 }

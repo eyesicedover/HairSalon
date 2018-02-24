@@ -25,10 +25,26 @@ namespace HairSalon.Models.Tests
             Client testClient = new Client("Josh", 3);
 
             //Act
-            int result = Client.GetClients(3).Count;
+            int result = Client.GetAll().Count;
 
             //Assert
             Assert.AreEqual(0, result);
+        }
+
+        [TestMethod]
+        public void Save_SavesToDatabase_ClientList()
+        {
+            //Arrange
+            Client testClient = new Client("Josh", 3);
+
+            //Act
+            testClient.Save();
+            List<Client> resultList = Client.GetAll();
+            List<Client> testList = new List<Client>{testClient};
+
+            //Assert
+            Assert.AreEqual(testList.Count, resultList.Count);
+            CollectionAssert.AreEqual(testList, resultList);
         }
     }
 }
