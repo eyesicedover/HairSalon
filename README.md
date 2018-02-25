@@ -4,7 +4,7 @@
 #### _By Stephanie Faber_  
 
 ## Description
-_This is a project designed to take a user input of a stylist and a user input of clients for specific stylists. _  
+_This is a project designed to take a user input of a stylist and a user input of clients for specific stylists._  
 
 ## Specifications
 
@@ -49,9 +49,9 @@ _This is a project designed to take a user input of a stylist and a user input o
 
 * _In Mono command prompt, type >mysql -uroot -proot_
 
-* _In mysql shell type >CREATE DATABASE hair_salon_
+* _In mysql shell type >CREATE DATABASE stephanie_faber_
 
-* _In mysql shell type >USE hair_salon_
+* _In mysql shell type >USE stephanie_faber_
 
 * _In mysql shell type >CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255));_
 

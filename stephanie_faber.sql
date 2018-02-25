@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 24, 2018 at 12:55 AM
+-- Generation Time: Feb 25, 2018 at 07:48 PM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.1.5
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `clients` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `stylistId` int(11) DEFAULT NULL
+  `stylistId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
