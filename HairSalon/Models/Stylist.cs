@@ -10,6 +10,7 @@ namespace HairSalon.Models
     {
         private int _id;
         private string _name;
+        private static int _currentStylistId;
 
         public Stylist(string name, int Id = 0)
         {
@@ -51,6 +52,16 @@ namespace HairSalon.Models
         public void SetName(string newName)
         {
             _name = newName;
+        }
+
+        public static void SetCurrentStylistId(int newId)
+        {
+            _currentStylistId = newId;
+        }
+
+        public static int GetCurrentStylistId()
+        {
+            return _currentStylistId;
         }
 
         public static void ClearAll()

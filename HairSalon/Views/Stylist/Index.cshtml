@@ -2,14 +2,22 @@
   Layout = "_Layout";
 }
 
-<h1>Current Stylists</h1>
-@if (@Model.Count == 0)
-{
-  <h2>There are no stylists yet!</h2>
+<h1>-Current Stylists-</h1>
+<p>Click on a Stylist to see a list of their Clients</p>
+@{
+    if (@Model.Count == 0)
+    {
+      <h2>There are no stylists yet!</h2>
+    }
+    else
+    {
+        @foreach (var stylist in Model)
+        {
+            <h3><a href="/stylists/@stylist.GetId()">@stylist.GetName()</a></h3>
+        }
+
+    }
 }
-@foreach (var stylist in Model)
-{
-  <h3><a href="/stylists/@stylist.GetId()">@stylist.GetName()</a></h3>
-}
-<p><a href="/stylists/new">Add A Stylist</a></p>
-<p><a href="/">Back to the Start</a></p>
+<hr>
+<h4><a href="/stylists/new">Add A Stylist</a></h4>
+<h4><a href="/">Go to Homepage</a></h4>
