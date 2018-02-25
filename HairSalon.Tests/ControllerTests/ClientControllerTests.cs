@@ -9,7 +9,7 @@ namespace HairSalon.Controllers.Tests
     public class ClientControllerTest
     {
 
-      [TestMethod]
+        [TestMethod]
         public void CreateForm_ReturnsCorrectView_True()
         {
             //Arrange

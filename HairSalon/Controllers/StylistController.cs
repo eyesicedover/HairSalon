@@ -38,7 +38,7 @@ namespace HairSalon.Controllers
             List<Client> specificClients = Client.GetSpecificClients(id);
             model.Add("stylist", thisStylist);
             model.Add("clients", specificClients);
-            return View(model);
+            return View("Details", model);
         }
     }
 }
